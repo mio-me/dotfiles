@@ -29,17 +29,6 @@ git config --global pull.rebase true
 git config --global rebase.autoStash true
 echo "Git configured succesfully."
 
-# Generate ssh-key
-read -p "Create new ssh-key? (Y/N): " confirm
-if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
-	echo "Creating new ssh-key..."
-	ssh-keygen -t ecdsa -b 521 -N '' -f ~/.ssh/id_rsa <<<y 2>&1 >/dev/null
-	xclip -sel c < ~/.ssh/id_ecdsa.pub
-	echo "Public key copied to clipboard."
-else
-	echo "Skipped creating ssh-key."
-fi
-
 # base
 echo "Installing base packages..."
 yay -S --nodiffmenu --noeditmenu --noupgrademenu google-chrome \
@@ -50,6 +39,17 @@ yay -S --nodiffmenu --noeditmenu --noupgrademenu google-chrome \
 	xclip \
 	nerd-fonts-complete
 echo "Installation succesfull."
+
+# Generate ssh-key
+read -p "Create new ssh-key? (Y/N): " confirm
+if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	echo "Creating new ssh-key..."
+	ssh-keygen -t ecdsa -b 521 -N '' -f ~/.ssh/id_rsa <<<y 2>&1 >/dev/null
+	xclip -sel c < ~/.ssh/id_ecdsa.pub
+	echo "Public key copied to clipboard."
+else
+	echo "Skipped creating ssh-key."
+fi
 
 # snap
 read -p "Install snapd? (Y/N): " confirm
