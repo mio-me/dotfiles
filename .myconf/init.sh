@@ -5,6 +5,13 @@ echo "Updating system..."
 sudo pacman -Syu
 echo "Finished Updating."
 
+# create folder structure
+mkdir -p $HOME/dev/uni
+mkdir -p $HOME/dev/private
+mkdir -p $HOME/dev/work
+mkdir -p $HOME/dev/nag
+
+
 # yay
 if [[ ! -d "$HOME/yay" ]]; then
 	echo "Installing yay..."
@@ -12,7 +19,7 @@ if [[ ! -d "$HOME/yay" ]]; then
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
 	makepkg -si
-	cd ~
+	cd $HOME
 	echo "yay succesfully installed."
 else
 	echo "yay is already installed."
@@ -37,14 +44,16 @@ yay -S --nodiffmenu --noeditmenu --noupgrademenu google-chrome \
 	exa \
 	bat \
 	xclip \
-	nerd-fonts-complete
+	nerd-fonts-complete \
+	npm \
+	python-pip
 echo "Installation succesfull."
 
 # Generate ssh-key
 read -p "Create new ssh-key? (Y/N): " confirm
 if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 	echo "Creating new ssh-key..."
-	ssh-keygen -t ecdsa -b 521 -N '' -f ~/.ssh/id_rsa <<<y 2>&1 >/dev/null
+	ssh-keygen -t ecdsa -b 521 -N '' -f ~/.ssh/id_ecdsa <<<y 2>&1 >/dev/null
 	xclip -sel c < ~/.ssh/id_ecdsa.pub
 	echo "Public key copied to clipboard."
 else
