@@ -2,8 +2,9 @@
 
 ## Dotfiles
 ```Bash
-git clone --separate-git-dir=$HOME/.myconf git@gitlab.com:thorbenbelow/dotfiles.git $HOME/myconf-tmp
+git clone --separate-git-dir=$HOME/.myconf https://github.com/thorbenbelow/dotfiles.git $HOME/myconf-tmp
 rm -r ~/myconf-tmp
+/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME checkout .
 ```
 
 ## Setup
