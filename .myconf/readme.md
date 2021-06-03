@@ -12,17 +12,3 @@ rm -r ~/myconf-tmp
 chmod 777 ~/.myconf/init.sh
 ~/.myconf/init.sh
 ```
-
-## Fonts
-```Bash
-mkdir /usr/share/fonts/<name>
-cp /path/to/fonts/* /usr/share/fonts/<name>/
-chmod 644 /usr/share/fonts/<name>/*
-fc-cache --force
-```
-
-## gdrive
-```Bash
-yay -S drive-bin
-drive init ~/gdrive
-```

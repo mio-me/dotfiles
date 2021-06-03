@@ -5,13 +5,6 @@ echo "Updating system..."
 sudo pacman -Syu
 echo "Finished Updating."
 
-# create folder structure
-mkdir -p $HOME/dev/uni
-mkdir -p $HOME/dev/private
-mkdir -p $HOME/dev/work
-mkdir -p $HOME/dev/nag
-
-
 # yay
 if [[ ! -d "$HOME/yay" ]]; then
 	echo "Installing yay..."
@@ -39,15 +32,9 @@ echo "Git configured succesfully."
 # base
 echo "Installing base packages..."
 yay -S --nodiffmenu --noeditmenu --noupgrademenu bat \
-	kitty \
 	neovim \
 	exa \
 	xclip \
-	nerd-fonts-complete \
-	google-chrome \
-	visual-studio-code-bin \
-	npm \
-	python-pip
 echo "Installation succesfull."
 
 # oh-my-zsh
@@ -59,8 +46,6 @@ config checkout .
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-
-
 # Generate ssh-key
 read -p "Create new ssh-key? (Y/N): " confirm
 if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
@@ -70,39 +55,6 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 	echo "Public key copied to clipboard."
 else
 	echo "Skipped creating ssh-key."
-fi
-
-# snap
-read -p "Install snapd? (Y/N): " confirm
-if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
-	if [[ ! -d "$HOME/snap" ]]; then
-		echo "Installing snapd..."
-		yay -S --nodiffmenu --noeditmenu --noupgrademenu snapd
-		sudo systemctl enable --now snapd.socket
-		sudo ln -s /var/lib/snapd/snap /snap
-		echo "snapd installed succesfully."
-	else
-		echo "snapd is already installed."
-	fi
-else
-	echo "Skipped installing snapd"
-fi
-
-# extended
-read -p "Install extended? (Y/N): " confirm
-if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
-	echo "Installing extended..."
-	yay -S --nodiffmenu --noeditmenu --noupgrademenu --removemake --cleanafter spotify \
-		zoom \
-		discord \
-		timeshift \
-		obs-studio
-	sudo snap install intellij-idea-ultimate --classic
-	sudo snap install pycharm-professional --classic
-	sudo snap install datagrip --classic
-	echo "Finished installing extended."
-else
-	echo "Skipped installing extended."
 fi
 
 # docker
