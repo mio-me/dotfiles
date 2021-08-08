@@ -5,12 +5,6 @@
 curl https://raw.githubusercontent.com/thorbenbelow/dotfiles/main/.myconf/init.sh | sh
 ```
 
-## Setup
-```Bash
-chmod 777 ~/.myconf/init.sh
-~/.myconf/init.sh
-```
-
 ## Fonts
 ```Bash
 mkdir /usr/share/fonts/<name>
