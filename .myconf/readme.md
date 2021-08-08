@@ -2,9 +2,7 @@
 
 ## Dotfiles
 ```Bash
-git clone --separate-git-dir=$HOME/.myconf https://github.com/thorbenbelow/dotfiles.git $HOME/myconf-tmp
-rm -r ~/myconf-tmp
-/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME checkout .
+curl https://raw.githubusercontent.com/thorbenbelow/dotfiles/main/.myconf/init.sh | sh
 ```
 
 ## Setup
@@ -36,7 +34,7 @@ ls /sys/firmware/efi/efivars
 # wifi
 iwctl --passphrase <passphrase> station <device> connect <SSID>
 # system clock
-timectl set-ntp true
+timedatectl set-ntp true
 # filesystem
 fdisk
 mkfs.fat -F32 /dev/<efi>
@@ -45,7 +43,7 @@ mkswap /dev/<swap>
 swapon
 # mount
 mount /dev/<root> /mnt
-pacstrap base linux linux-firmware
+pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 #
 arch-chroot /mnt

@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+git clone --separate-git-dir=$HOME/.myconf https://github.com/thorbenbelow/dotfiles.git $HOME/myconf-tmp
+rm -r ~/myconf-tmp
+/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME checkout .
+
+
 # update
 echo "Updating system..."
 sudo pacman -Syu
@@ -43,11 +48,7 @@ yay -S --nodiffmenu --noeditmenu --noupgrademenu bat \
 	neovim \
 	exa \
 	xclip \
-	nerd-fonts-complete \
-	google-chrome \
-	visual-studio-code-bin \
-	npm \
-	python-pip
+	google-chrome
 echo "Installation succesfull."
 
 # oh-my-zsh
@@ -94,8 +95,12 @@ if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 	echo "Installing extended..."
 	yay -S --nodiffmenu --noeditmenu --noupgrademenu --removemake --cleanafter spotify \
 		zoom \
+		nerd-fonts-complete \
 		discord \
 		timeshift \
+		visual-studio-code-bin \
+		npm \
+		python-pip \
 		obs-studio
 	sudo snap install intellij-idea-ultimate --classic
 	sudo snap install pycharm-professional --classic
