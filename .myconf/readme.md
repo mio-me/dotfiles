@@ -19,6 +19,12 @@ yay -S drive-bin
 drive init ~/gdrive
 ```
 
+## awesome
+```Bash
+pacman -S xorg-server awesome nitrogen picom
+localectl set-x11-keymap de
+```
+
 ## Arch
 ```Bash
 # Keyboard
@@ -30,7 +36,7 @@ iwctl --passphrase <passphrase> station <device> connect <SSID>
 # system clock
 timedatectl set-ntp true
 # filesystem
-fdisk
+fdisk /dev/sdx
 mkfs.fat -F32 /dev/<efi>
 mkfs.ext4 /dev/<root>
 mkswap /dev/<swap>
