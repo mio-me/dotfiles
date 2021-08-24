@@ -18,23 +18,40 @@ source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
 
+# Config
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
 alias awesomeconfig="code ~/.config/awesome"
 alias config="/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME"
-alias pi="sudo pacman -S"
-alias up="docker-compose up"
-alias down="docker-compose down"
-alias py="python"
+
+# Files and directories
+alias dev="cd ~/dev"
 alias cat="bat -n"
+alias copy="xclip -sel c"
 alias ls="exa"
 alias la="exa --long --all"
-alias vi="nvim"
 alias o="xdg-open"
-alias dev="cd ~/dev"
+
+# Misc
+alias pi="sudo pacman -S"
+alias py="python"
+alias vi="nvim"
 alias aspire="ssh thorben@192.168.0.103"
-alias d="docker"
-alias k="kubectl"
 alias battery="acpi -b"
-alias copy="xclip -sel c"
+
+# kube
+alias k="kubectl"
+
+# Docker
+alias d="docker"
+alias dcu="docker compose up"
+alias dcd="docker compose down"
+
+# Terraform
+alias ti="terraform init"
+alias tiu="terraform init -upgrade"
+alias tp="terraform plan"
+alias tpp="terraform plan -out planned"
+alias ta="terraform apply"
+alias tap="terraform apply planned"
