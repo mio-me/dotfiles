@@ -1,0 +1,13 @@
+bat
+exa
+neovim
+tldr
+neofetch
+htop
+xclip
+git
+zsh
+ranger
+wget
+curl
+neofetch
