@@ -8,7 +8,8 @@ apt update -y
 cat $HOME/.myconf/base.txt | tr '\n' ' ' | apt install -y
 
 # git
-git config --global gpg.sign false
+git config --global commit.gpgsign false
+git config --global tag.gpgsign false
 
 # zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
