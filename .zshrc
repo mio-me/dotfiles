@@ -8,8 +8,6 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
 
-export GPG_TTY=$(tty)
-
 plugins=(
 	git
 	zsh-autosuggestions
@@ -44,6 +42,7 @@ alias aspire="ssh thorben@192.168.0.103"
 alias battery="acpi -b"
 
 # Git
+export GPG_TTY=$(tty)
 function gitid() {
 	f=$(gpg --list-secret-keys --keyid-format=long $1)
 	[[ $f =~ '^sec +rsa4096\/(\w+) ' ]]
