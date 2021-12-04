@@ -11,3 +11,4 @@ ranger
 wget
 curl
 neofetch
+fzf
