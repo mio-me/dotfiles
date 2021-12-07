@@ -2,7 +2,7 @@
 
 ## Dotfiles
 ```Bash
-curl https://raw.githubusercontent.com/thorbenbelow/dotfiles/main/.myconf/init.sh | sh
+curl https://raw.githubusercontent.com/mio-me/dotfiles/main/.myconf/init.sh | sh
 ```
 
 ## Fonts
