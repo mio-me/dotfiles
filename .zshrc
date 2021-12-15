@@ -5,18 +5,25 @@ HIST_STAMPS="yyyy-mm-dd"
 
 source $ZSH/oh-my-zsh.sh
 
+# Env
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
+
+function loadenv() {
+if [ -f $1 ]
+then
+  export $(cat $1 | sed 's/#.*//g' | xargs)
+fi
+}
+
+# Path
+export PATH=$PATH:/usr/local/go/bin
 
 plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
-
-source $ZSH/oh-my-zsh.sh
-
-export LANG=en_US.UTF-8
 
 # Config
 alias zshconfig="nvim ~/.zshrc"
@@ -27,6 +34,7 @@ alias config="/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME"
 alias pkglist="nvim ~/.myconf/init/pkg.txt"
 
 # Files and directories
+alias bat="batcat"
 alias dev="cd ~/dev"
 alias cat="bat -n"
 alias copy="xclip -sel c"

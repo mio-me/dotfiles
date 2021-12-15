@@ -11,3 +11,8 @@ ranger
 wget
 curl
 neofetch
+fd-find
+fzf
+zoxide
+delta
+ripgrep

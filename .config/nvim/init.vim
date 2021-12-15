@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
+
 " Theme
 Plug 'ap/vim-css-color'
 
@@ -19,6 +20,16 @@ set shiftwidth=2
 set hls is
 
 let mapleader=" "
+
+" No arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+
+" Left and Right can switch buffers
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
 
 "statusline
 set statusline=
