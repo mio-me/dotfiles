@@ -1,8 +1,13 @@
 # Setup guide
 
 ## Dotfiles
+### Dependencies
+- curl
+- git
+- zsh
+
 ```Bash
-curl https://raw.githubusercontent.com/mio-me/dotfiles/main/.myconf/init.sh | sh
+curl https://raw.githubusercontent.com/mio-me/dotfiles/main/script/bootstrap.sh | sh
 ```
 ## Install basic software
 Replace `yay` with correct package manager
