@@ -25,6 +25,10 @@ plugins=(
 	zsh-syntax-highlighting
 )
 
+if [ -f ~/.zsh/completions/_zsh ]; then
+    source ~/.zsh/completions/_zsh
+fi
+
 # Config
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
@@ -63,7 +67,9 @@ function gitid() {
 alias gm="git commit -m"
 
 # kube
+alias km="kubectl --kubeconfig ~/dev/pv/kube/k3s/k3s.yaml"
 alias k="kubectl"
+alias kustom="kubectl apply -k"
 
 # Docker
 alias d="docker"
@@ -82,3 +88,4 @@ alias tap="terraform apply planned"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)

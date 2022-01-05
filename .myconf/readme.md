@@ -4,6 +4,17 @@
 ```Bash
 curl https://raw.githubusercontent.com/mio-me/dotfiles/main/.myconf/init.sh | sh
 ```
+## Install basic software
+Replace `yay` with correct package manager
+```Bash
+yay -S $(curl https://raw.githubusercontent.com/mio-me/dotfiles/main/.myconf/base.txt | tr '\n' ' ')
+```
+
+## Debian unstable
+Add to `/etc/apt/sources.list`
+```
+deb http://deb.debian.org/debian unstable main
+```
 
 ## Fonts
 ```Bash
