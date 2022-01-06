@@ -5,6 +5,7 @@
 - curl
 - git
 - zsh
+- vim
 
 ```Bash
 curl https://raw.githubusercontent.com/mio-me/dotfiles/main/script/bootstrap.sh | sh
