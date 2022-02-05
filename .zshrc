@@ -16,7 +16,6 @@ then
 fi
 }
 
-# Path
 export PATH=$PATH:/usr/local/go/bin
 
 plugins=(
