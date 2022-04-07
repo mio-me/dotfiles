@@ -6,6 +6,7 @@ Plug 'ap/vim-css-color'
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'folke/which-key.nvim'
 
 call plug#end()
 
@@ -14,7 +15,7 @@ set encoding=UTF-8
 syntax on
 
 set number relativenumber
-set cursorline
+" set cursorline
 set cmdheight=1
 set shiftwidth=2
 set hls is
@@ -26,6 +27,11 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
+
+" Windows like shortcuts
+nnoremap <c-s> :w<cr>
+nnoremap <c-q> :q<cr>
+" TODO: open, cut, copy, paste, search
 
 " Left and Right can switch buffers
 nnoremap <left> :bp<CR>
@@ -52,4 +58,5 @@ lua << EOF
 require('telescope').setup{
   prompt_prefix = ""
 }
+require('which-key').setup {}
 EOF
