@@ -8,7 +8,7 @@
 - vim
 
 ```Bash
-curl https://raw.githubusercontent.com/thorbenbelow/dotfiles/main/script/bootstrap.sh | sh
+curl -L https://dot.embi.me | sh
 ```
 ## Install basic software
 Replace `yay` with correct package manager

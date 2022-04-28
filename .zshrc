@@ -1,6 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="afowler"
+ZSH_THEME="alanpeabody"
+# Good themes: afowler af-magic dieter
 HIST_STAMPS="yyyy-mm-dd"
 
 source $ZSH/oh-my-zsh.sh
@@ -43,14 +44,20 @@ alias cat="bat -n"
 alias copy="xclip -sel c"
 alias ls="exa"
 alias la="exa --long --all"
+alias ll="clear && la"
 alias o="xdg-open"
+
+# WSL
+alias exp="explorer.exe"
+alias rmident="find . -name '*:Zone.Identifier' -type f -delete"
 
 # Misc
 alias pi="sudo pacman -S"
-alias py="python"
+alias py="python3"
 alias vi="nvim"
 alias aspire="ssh thorben@192.168.0.103"
 alias battery="acpi -b"
+alias lvim="/home/thorben/.local/bin/lvim"
 
 # Git
 export GPG_TTY=$(tty)
