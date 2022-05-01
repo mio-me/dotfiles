@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="alanpeabody"
+ZSH_THEME="robbyrussell"
 # Good themes: afowler af-magic dieter
 HIST_STAMPS="yyyy-mm-dd"
 
@@ -11,8 +11,7 @@ export LANG=en_US.UTF-8
 export EDITOR='nvim'
 
 function loadenv() {
-if [ -f $1 ]
-then
+if [ -f $1 ]; then
   export $(cat $1 | sed 's/#.*//g' | xargs)
 fi
 }
@@ -29,6 +28,9 @@ if [ -f ~/.zsh/completions/_zsh ]; then
     source ~/.zsh/completions/_zsh
 fi
 
+# Zoxide
+eval "$(zoxide init zsh)"
+
 # Config
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
@@ -42,10 +44,24 @@ alias bat="batcat"
 alias dev="cd ~/dev"
 alias cat="bat -n"
 alias copy="xclip -sel c"
-alias ls="exa"
-alias la="exa --long --all"
-alias ll="clear && la"
+
+if [ command -v exa &> /dev/null ]; then
+  alias ls="exa"
+  alias la="exa --long --all"
+  alias ll="clear && la"
+fi
 alias o="xdg-open"
+
+# Terraform
+if [ command -v terraform &> /dev/null ]; then
+  alias ti="terraform init"
+  alias tiu="terraform init -upgrade"
+  alias tp="terraform plan"
+  alias tpp="terraform plan -out planned"
+  alias ta="terraform apply"
+  alias tap="terraform apply planned"
+fi
+
 
 # WSL
 alias exp="explorer.exe"
@@ -56,8 +72,6 @@ alias pi="sudo pacman -S"
 alias py="python3"
 alias vi="nvim"
 alias aspire="ssh thorben@192.168.0.103"
-alias battery="acpi -b"
-alias lvim="/home/thorben/.local/bin/lvim"
 
 # Git
 export GPG_TTY=$(tty)
@@ -73,25 +87,23 @@ function gitid() {
 alias gm="git commit -m"
 
 # kube
-alias km="kubectl --kubeconfig ~/dev/pv/kube/k3s/k3s.yaml"
-alias k="kubectl"
-alias kustom="kubectl apply -k"
+if [ command -v kubectl &> /dev/null ]; then
+  alias km="kubectl --kubeconfig ~/dev/pv/kube/k3s/k3s.yaml"
+  alias k="kubectl"
+  alias kustom="kubectl apply -k"
+fi
 
 # Docker
-alias d="docker"
-alias dcu="docker compose up"
-alias dcd="docker compose down"
-
-# Terraform
-alias ti="terraform init"
-alias tiu="terraform init -upgrade"
-alias tp="terraform plan"
-alias tpp="terraform plan -out planned"
-alias ta="terraform apply"
-alias tap="terraform apply planned"
+if [ command -v docker &> /dev/null ]; then
+  alias d="docker"
+  alias dcu="docker compose up"
+  alias dcd="docker compose down"
+fi
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+if [ command -v nvm &> /dev/null ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+fi
