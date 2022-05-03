@@ -44,16 +44,20 @@ alias bat="batcat"
 alias dev="cd ~/dev"
 alias cat="bat -n"
 alias copy="xclip -sel c"
+alias lvim="$HOME/.local/bin/lvim"
 
-if [ command -v exa &> /dev/null ]; then
+if command -v exa &> /dev/null
+then
   alias ls="exa"
+  alias l="exa --long --all"
   alias la="exa --long --all"
   alias ll="clear && la"
 fi
 alias o="xdg-open"
 
 # Terraform
-if [ command -v terraform &> /dev/null ]; then
+if command -v terraform &> /dev/null
+then
   alias ti="terraform init"
   alias tiu="terraform init -upgrade"
   alias tp="terraform plan"
@@ -87,21 +91,24 @@ function gitid() {
 alias gm="git commit -m"
 
 # kube
-if [ command -v kubectl &> /dev/null ]; then
+if command -v kubectl &> /dev/null
+then
   alias km="kubectl --kubeconfig ~/dev/pv/kube/k3s/k3s.yaml"
   alias k="kubectl"
   alias kustom="kubectl apply -k"
 fi
 
 # Docker
-if [ command -v docker &> /dev/null ]; then
+if command -v docker &> /dev/null
+then
   alias d="docker"
   alias dcu="docker compose up"
   alias dcd="docker compose down"
 fi
 
 # nvm
-if [ command -v nvm &> /dev/null ]; then
+if command -v nvm &> /dev/null
+then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
