@@ -38,6 +38,7 @@ alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
 alias awesomeconfig="code ~/.config/awesome"
 alias config="/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME"
 alias pkglist="nvim ~/.myconf/init/pkg.txt"
+alias o="xdg-open"
 
 # Files and directories
 alias bat="batcat"
@@ -53,7 +54,6 @@ then
   alias la="exa --long --all"
   alias ll="clear && la"
 fi
-alias o="xdg-open"
 
 # Terraform
 if command -v terraform &> /dev/null
@@ -68,8 +68,11 @@ fi
 
 
 # WSL
-alias exp="explorer.exe"
-alias rmident="find . -name '*:Zone.Identifier' -type f -delete"
+if  [[ $(uname -r) == *WSL2 ]]
+then
+  alias exp="explorer.exe"
+  alias rmident="find . -name '*:Zone.Identifier' -type f -delete"
+fi
 
 # Misc
 alias pi="sudo pacman -S"
@@ -80,13 +83,13 @@ alias aspire="ssh thorben@192.168.0.103"
 # Git
 export GPG_TTY=$(tty)
 function gitid() {
-	f=$(gpg --list-secret-keys --keyid-format=long $1)
-	[[ $f =~ '^sec +rsa4096\/(\w+) ' ]]
-	key=$match[1]
-	git config user.email $1
-	git config user.signingkey $match[1]
-	echo "Git Email: " $1
-	echo "Git Signingkey: " $key
+  f=$(gpg --list-secret-keys --keyid-format=long $1)
+  [[ $f =~ '^sec +rsa4096\/(\w+) ' ]]
+  key=$match[1]
+  git config user.email $1
+  git config user.signingkey $match[1]
+  echo "Git Email: " $1
+  echo "Git Signingkey: " $key
 }
 alias gm="git commit -m"
 
@@ -107,10 +110,7 @@ then
 fi
 
 # nvm
-if command -v nvm &> /dev/null
-then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
-fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
