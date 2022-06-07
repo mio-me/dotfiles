@@ -6,7 +6,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
 
-
 " Semantic language support
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
@@ -31,36 +30,18 @@ Plug 'folke/which-key.nvim'
 Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 
-
-
 call plug#end()
 
 set encoding=UTF-8
-
 syntax on
 
-set number relativenumber
+
 set cursorline
 set cmdheight=1
 set shiftwidth=2
 set hls is
 
-let mapleader=" "
-
-" No arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-
-inoremap jj <Esc>
-nnoremap <leader>w :w<cr>
-nnoremap <leader>q ZZ
-nnoremap <leader>c :q
-
-" Left and Right can switch buffers
-nnoremap <left> :bp<CR>
-nnoremap <right> :bn<CR>
+source $HOME/.config/nvim/shared.vim
 
 "statusline
 set statusline=
