@@ -4,6 +4,13 @@ ZSH_THEME="robbyrussell"
 # Good themes: afowler af-magic dieter
 HIST_STAMPS="yyyy-mm-dd"
 
+plugins=(
+	git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+)
+
+
 source $ZSH/oh-my-zsh.sh
 
 # Env
@@ -17,13 +24,6 @@ fi
 }
 
 export PATH=$PATH:/usr/local/go/bin
-
-plugins=(
-	git
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-)
-
 if [ -f ~/.zsh/completions/_zsh ]; then
     source ~/.zsh/completions/_zsh
 fi
