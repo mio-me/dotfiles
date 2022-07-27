@@ -10,6 +10,7 @@ plugins=(
 	zsh-syntax-highlighting
 )
 
+export PATH=$PATH:/usr/local/go/bin
 
 source $ZSH/oh-my-zsh.sh
 
@@ -23,7 +24,6 @@ if [ -f $1 ]; then
 fi
 }
 
-export PATH=$PATH:/usr/local/go/bin
 if [ -f ~/.zsh/completions/_zsh ]; then
     source ~/.zsh/completions/_zsh
 fi
@@ -65,6 +65,11 @@ then
   alias ta="terraform apply"
   alias tap="terraform apply planned"
 fi
+
+# Google
+GOOGLE_DIR="$HOME/dev/google"
+export PATH=$PATH:$GOOGLE_DIR/depot_tools
+alias d8="$GOOGLE_DIR/v8/out/x64.optdebug/d8"
 
 
 # WSL
