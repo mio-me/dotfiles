@@ -1,7 +1,9 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+RPI=192.168.0.2
+
 ZSH_THEME="robbyrussell"
-# Good themes: afowler af-magic dieter
+# Good themes: robbyrussell afowler af-magic dieter
 HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
@@ -11,6 +13,7 @@ plugins=(
 )
 
 export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -31,8 +34,13 @@ fi
 # Zoxide
 eval "$(zoxide init zsh)"
 
+# Deno
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 # Config
 alias zshconfig="nvim ~/.zshrc"
+alias nvimconfig="nvim ~/.config/nvim/init.lua"
 alias ohmyzsh="code ~/.oh-my-zsh"
 alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
 alias awesomeconfig="code ~/.config/awesome"
@@ -42,10 +50,11 @@ alias o="xdg-open"
 
 # Files and directories
 alias bat="batcat"
-alias dev="cd ~/dev"
 alias cat="bat -n"
 alias copy="xclip -sel c"
 alias lvim="$HOME/.local/bin/lvim"
+alias hx="$HOME/.local/bin/hx"
+
 
 if command -v exa &> /dev/null
 then
@@ -112,6 +121,8 @@ then
   alias d="docker"
   alias dcu="docker compose up"
   alias dcd="docker compose down"
+  alias docker-compose="docker compose"
+  alias pidocker="DOCKER_HOST=ssh://pi@$RPI docker"
 fi
 
 # nvm
