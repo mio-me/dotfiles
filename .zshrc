@@ -12,8 +12,15 @@ plugins=(
 	zsh-syntax-highlighting
 )
 
+# Go Lang
 export PATH=$PATH:/usr/local/go/bin
+# Jetbrains ide's
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+
+# Python packages
+export PATH="$(python3 -m site --user-base)/bin:$PATH"
+# Mozilla contributor tools
+export PATH="/home/thorben/.mozbuild/git-cinnabar:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
